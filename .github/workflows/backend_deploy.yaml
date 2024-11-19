@@ -33,6 +33,7 @@ jobs:
           echo '${{ secrets.BACKEND_TOML }}' > wrangler.toml
           pnpm install --no-frozen-lockfile
           output=$(pnpm run deploy 2>&1)
+          echo "$output" 
           if [ $? -ne 0 ]; then
               code=$?
               echo "Command failed with exit code $code"
